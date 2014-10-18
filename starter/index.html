@@ -5,22 +5,21 @@
 
   <title>unquote</title>
 
-  <meta name="viewport" 
-  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
   <script src="../components/platform/platform.js">
   </script>
 
   <link rel="import" href="../components/font-roboto/roboto.html">
   <link rel="import"
-  href="../components/core-header-panel/core-header-panel.html">
+    href="../components/core-header-panel/core-header-panel.html">
   <link rel="import"
-  href="../components/core-toolbar/core-toolbar.html">
+    href="../components/core-toolbar/core-toolbar.html">
   <link rel="import"
-  href="../components/paper-tabs/paper-tabs.html">
-  <link rel="import" href="post-card.html">
+    href="../components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="post-list.html">
 
-  <style>
+ <style>
   html,body {
     height: 100%;
     margin: 0;
@@ -30,20 +29,20 @@
   core-header-panel {
     height: 100%;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch; 
   }
   core-toolbar {
-    background: #0ef;
+    background: #03a9f4;
     color: white;
   }
-  #tabs{
+  #tabs {
     width: 100%;
     margin: 0;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    text-textform: uppercase;
+  text-transform: uppercase;
   }
   .container {
     width: 80%;
@@ -64,34 +63,28 @@
 <body unresolved>
 <core-header-panel>
 
-  <core-toolbar>
+    <core-toolbar>
 
-    <paper-tabs id="tabs" selected="all" self-end>
-      <paper-tab name="Stutern">Stutern</paper-tab>
-      <paper-tab name="Taiwo">Taiwo</paper-tab>
-    </paper-tabs>
+      <paper-tabs id="tabs" selected="all" self-end>
+        <paper-tab name="stutern">Stutern</paper-tab>
+        <paper-tab name="taiwo">Taiwo</paper-tab>
+      </paper-tabs>
 
-  </core-toolbar>
+    </core-toolbar>
 
-<div class="container" layout vertical center>
-  <post-card>
-    <img width="70" height="70" 
-      src="../images/avatar-07.svg">
-    <h2>Another Developer</h2>
-    <p>I'm composing with shadow DOM!</p>
-  </post-card>
-  </div>
+    <div class="container" layout vertical center>
+      <post-list show="all"></post-list>
+    </div>
 
+  </core-header-panel>
 
-</core-header-panel>
   <script>
-    
-    var tabs = documents.querySelector('paper-tab');
+  var tabs = document.querySelector('paper-tabs');
+  var list = document.querySelector('post-list');
 
-    tab.addEventListner('core-select', function(){
-      console.log("Selected: "+tabs.selected);
-    });
-
+  tabs.addEventListener('core-select', function() {
+    list.show = tabs.selected;
+  });
   </script>
 </body>
 
